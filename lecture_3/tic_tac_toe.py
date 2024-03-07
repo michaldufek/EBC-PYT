@@ -1,23 +1,17 @@
 def print_board(board):
     for row in board:
         print(" | ".join(row))
-        print("-" * 9)  # Adjusted for 5x5 grid
-
-def check_line(line):
-    return line.count(line[0]) == 5 and line[0] != " "
+        print("-" * 5)
 
 def check_win(board):
-    # Check horizontal and vertical lines for a win
-    for i in range(5):
-        if check_line(board[i]):  # Check row
+    # Check horizontal, vertical, and diagonal for win
+    for i in range(3):
+        if board[i][0] == board[i][1] == board[i][2] != " ":  # Check rows
             return True
-        if check_line([board[j][i] for j in range(5)]):  # Check column
+        if board[0][i] == board[1][i] == board[2][i] != " ":  # Check columns
             return True
-
-    # Check diagonals for a win
-    if check_line([board[i][i] for i in range(5)]) or check_line([board[i][4 - i] for i in range(5)]):
+    if board[0][0] == board[1][1] == board[2][2] != " " or board[0][2] == board[1][1] == board[2][0] != " ":  # Check diagonals
         return True
-
     return False
 
 def check_draw(board):
@@ -29,24 +23,24 @@ def check_draw(board):
 def get_player_move(board, player):
     while True:
         try:
-            move = int(input(f"Player {player}, enter your move (1-25): ")) - 1
-            if move < 0 or move > 24:
+            move = int(input(f"Player {player}, enter your move (1-9): ")) - 1
+            if move < 0 or move > 8:
                 print("Invalid move. Please try again.")
-            elif board[move // 5][move % 5] != " ":
+            elif board[move // 3][move % 3] != " ":
                 print("This cell is already taken. Please try again.")
             else:
                 return move
         except ValueError:
-            print("Invalid input. Please enter a number from 1 to 25.")
+            print("Invalid input. Please enter a number from 1 to 9.")
 
 def play_game():
-    board = [[" " for _ in range(5)] for _ in range(5)]
+    board = [[" " for _ in range(3)] for _ in range(3)]
     current_player = "X"
 
     while True:
         print_board(board)
         move = get_player_move(board, current_player)
-        board[move // 5][move % 5] = current_player
+        board[move // 3][move % 3] = current_player
 
         if check_win(board):
             print_board(board)
@@ -59,5 +53,5 @@ def play_game():
 
         current_player = "O" if current_player == "X" else "X"
 
-if __name__ == "__main__":
+if __name__=="__main__":
     play_game()
