@@ -1,0 +1,28 @@
+{"otazky": [
+    {
+        "znění": "Popište proces fotosyntézy.",
+        "max_body": 5,
+        "klicova_slova": {"slunce": 1, "chlorofyl": 2, "kyslík": 1, "uhličitý": 1, "voda": 1}
+    },
+    {
+        "znění": "Vysvětlete princip fungování parního stroje.",
+        "max_body": 5,
+        "klicova_slova": {"pára": 2, "tlak": 2, "válce": 1, "píst": 1, "kondenzace": -1}
+    },
+    {
+        "znění": "Co je relativnost času?",
+        "max_body": 5,
+        "klicova_slova": {"Einstein": 2, "teorie": 1, "gravitace": 1, "rychlost": 1, "čas": 1}
+    },
+    {
+        "znění": "Vysvětlete, jak funguje GPS.",
+        "max_body": 5,
+        "klicova_slova": {"satelity": 2, "signál": 2, "přesnost": 1, "poloha": 1, "časové": -1}
+    },
+    {
+        "znění": "Jaká je funkce mitochondrií v buňce?",
+        "max_body": 5,
+        "klicova_slova": {"energie": 2, "dýchání": 2, "ATP": 1, "buňka": 1, "kyslík": -1}
+    }
+    ]
+}
