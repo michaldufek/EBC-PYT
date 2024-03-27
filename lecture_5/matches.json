@@ -1,0 +1,30 @@
+[
+    {
+        "date": "2024-03-27",
+        "team1": "Team A",
+        "team2": "Team B",
+        "result": "2:1",
+        "scorers": "John Doe 2, Jane Smith 1"
+    },
+    {
+        "date": "2024-03-28",
+        "team1": "Team C",
+        "team2": "Team D",
+        "result": "0:3",
+        "scorers": "Michael Brown 2, Alex Johnson 1"
+    },
+    {
+        "date": "2024-03-29",
+        "team1": "Team A",
+        "team2": "Team C",
+        "result": "1:1",
+        "scorers": "John Doe 1, Christopher Walker 1"
+    },
+    {
+        "date": "2024-03-30",
+        "team1": "Team B",
+        "team2": "Team D",
+        "result": "2:2",
+        "scorers": "Jane Smith 1, Emily White 1, Michael Brown 1, Alex Johnson 1"
+    }
+]
