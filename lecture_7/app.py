@@ -27,18 +27,23 @@ class User:
         self.friends = set()
         self.messages = []
 
+
     def update_password(self, new_password):
         self.password = new_password
         print("Password updated successfully.")
 
+
     def add_friend(self, friend):
         self.friends.add(friend)
+
 
     def remove_friend(self, friend):
         self.friends.discard(friend)
 
+
     def send_message(self, recipient, message):
         recipient.messages.append((self.username, message))
+
 
     def show_new_messages(self):
         new_messages = []
@@ -92,6 +97,7 @@ class SocialNetwork:
             return True
         return False
 
+  
     def show_new_messages(self):
         if self.logged_in_user:
             new_messages = self.logged_in_user.show_new_messages()
@@ -145,6 +151,7 @@ class SocialNetworkGUI:
         self.messages_text = tk.Text(self.master, state='disabled', height=10, width=50)
         self.messages_text.pack()
 
+
     def login(self):
         username = self.username_entry.get().strip()
         password = self.password_entry.get().strip()
@@ -158,6 +165,7 @@ class SocialNetworkGUI:
             logging.warning(f"Login failed for user: {username}")
             messagebox.showerror("Login failed", "Incorrect username or password")
 
+
     def register(self):
         username = self.username_entry.get().strip()
         password = self.password_entry.get().strip()
@@ -169,6 +177,7 @@ class SocialNetworkGUI:
             logging.warning(f"Registration failed for user: {username}. Username may already be taken.")
             messagebox.showerror("Registration failed", "Username may already be taken")
             
+
     def display_messages(self):
         self.messages_text.config(state='normal')
         self.messages_text.delete(1.0, tk.END)
@@ -176,15 +185,18 @@ class SocialNetworkGUI:
             self.messages_text.insert(tk.END, f"{message[0]}: {message[1]}\n")
         self.messages_text.config(state='disabled')
 
+
     def show_message_sending_ui(self):
         # Update the recipient dropdown list
         self.recipient_dropdown['values'] = list(self.network.users.keys())
         self.message_frame.pack()
 
+
     def send_message(self):
         recipient = self.recipient_var.get()
         message = self.message_entry.get()
         if recipient and message and self.network.send_message(recipient, message):
+            logging.info(f"Message has been sent to {recipient}")
             messagebox.showinfo("Success", "Message sent successfully.")
             self.messages_text.config(state='normal')
             self.messages_text.insert(tk.END, f"[To {recipient}]: {message}\n")  # Show sent message
@@ -195,6 +207,7 @@ class SocialNetworkGUI:
 
 
     def refresh_messages(self):
+        logging.info("Refreshing messages ... ")
         if self.network.logged_in_user:
             new_messages = self.network.logged_in_user.show_new_messages()
             if new_messages:
@@ -203,9 +216,7 @@ class SocialNetworkGUI:
                     self.messages_text.insert(tk.END, f"[From {sender}]: {message}\n")
                 self.messages_text.config(state='disabled')
             # Schedule this method to be called again after a certain amount of time
-            self.master.after(5000, self.refresh_messages)  # 5000 milliseconds = 5 seconds
-
-
+            self.master.after(15000, self.refresh_messages)  
 
 
 if __name__ == "__main__":
